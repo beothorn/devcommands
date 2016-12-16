@@ -32,7 +32,7 @@ devcmd = {
         var http = new XMLHttpRequest();
         var params = {};
         if(postConfig.parameters)
-            params = glob_comands.toParams(postConfig.parameters);
+            params = devcmd.toParams(postConfig.parameters);
         http.open("POST", (postConfig.url || '.'), true);
         
         if(postConfig.headers){
