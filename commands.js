@@ -71,7 +71,7 @@ devcmd = {
             devcmd.removeElement('#'+id);
         }
         var elemtIFrame = document.createElement('iframe');
-        elemtIFrame.style.cssText = 'position:absolute;width:100%;height:100%;opacity:0.3;z-index:100;';
+        elemtIFrame.style.cssText = 'width:100%;z-index:100;';
         elemtIFrame.id = id;
         document.body.appendChild(elemtIFrame);
         elemtIFrame.src = "data:text/html;charset=utf-8," + escape(html_string);
