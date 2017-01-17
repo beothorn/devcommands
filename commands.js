@@ -1,4 +1,4 @@
-devcmd = {
+dev = {
     /***
     * Outputs a parameter string from an input json
     * ex: {"foo":"bar","baz":"qux"}
