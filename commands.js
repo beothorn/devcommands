@@ -117,5 +117,10 @@ devcmd = {
         var element = document.querySelector(query);
         element.outerHTML = "";
         delete element;
+    },
+    editPage(){
+        document.body.contentEditable=true;
     }
+    //TODO: chrome perf tools here (see https://medium.freecodecamp.com/10-tips-to-maximize-your-javascript-debugging-experience-b69a75859329#.9p62qm879)
+    //TODO: matrix to console table ex: table(["colA","colB"],[[1,2][3,4]]);
 };
