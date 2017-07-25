@@ -60,6 +60,7 @@ dev = {
         }
         http.send(params);
     },
+    dev.postUrl = function(url){dev.post({url:url})},
     /***
     * Outputs html on a Iframe
     * html_string
