@@ -1,7 +1,8 @@
 dev = {
     /***
     * Outputs a parameter string from an input json
-    * ex: {"foo":"bar","baz":"qux"}
+    * ex: 
+    * dev.toParams({"foo":"bar","baz":"qux"});
     * returns "foo=bar&baz=qux"
     * obj a json
     ***/
@@ -16,13 +17,7 @@ dev = {
     /***
     * Run a ajax post request
     * ex:
-    * devcmd.post({
-    *   url:'/url/to/do/something.php',
-    *   parameter:{
-    *     'token':'foo',
-    *     'myValue':'42'
-    *   }
-    * }, devcmd.outputHtml)
+    * dev.post({url:'/url/to/do/something.php',parameter:{'token':'foo','myValue':'42'}}, devcmd.outputHtml)
     * 
     * postConfig a json with {url,parameters(optional),headers(optional)}
     * successCallback called when return status is OK
@@ -60,7 +55,7 @@ dev = {
         }
         http.send(params);
     },
-    dev.postUrl:function(url){dev.post({url:url})},
+    postUrl:function(url){dev.post({url:url})},
     /***
     * Outputs html on a Iframe
     * html_string
