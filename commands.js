@@ -164,5 +164,5 @@ devcmd = {
     //TODO: matrix to console table ex: table(["colA","colB"],[[1,2][3,4]]);
 };
 
-console.log("Methods: devcmd."+Object.getOwnPropertyNames(devcmd).join(", devcmd."));
+console.log("Methods: devcmd."+Object.getOwnPropertyNames(devcmd).join("\n devcmd."));
 "Loaded devcmd";
