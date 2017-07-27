@@ -154,7 +154,7 @@ devcmd = {
     editPage:function(){
         document.body.contentEditable=true;
     },
-    stopAnimation:function(){
+    stopAnimations:function(){
         for(var i = 0; i <= 100000; i++){
             window.cancelAnimationFrame(i);
         }
