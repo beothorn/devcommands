@@ -19,7 +19,7 @@ devcmd = {
     * ex:
     * dev.post({url:'http://www.example.com/dosomething',parameter:{'token':'foo','myValue':'42'}})
     * or
-    * dev.post({url:'http://www.example.com/dosomething',parameter:{'token':'foo','myValue':'42'}}, devcmd.outputHtml)
+    * dev.post({url:'http://www.example.com/dosomething',parameter:{'token':'foo','myValue':'42'}}, devcmd.appendOnPage)
     * 
     * postConfig a json with {url,parameters(optional),headers(optional)}
     * successCallback called when return status is OK
@@ -63,7 +63,7 @@ devcmd = {
     * ex:
     * dev.get("http://www.example.com/dosomething")
     * or
-    * dev.get("http://www.example.com/dosomething", devcmd.outputHtml)
+    * dev.get("http://www.example.com/dosomething", devcmd.appendOnPage)
     * 
     * postConfig a json with {url,parameters(optional),headers(optional)}
     * successCallback called when return status is OK
@@ -94,11 +94,12 @@ devcmd = {
         http.send();
     },
     /***
-    * Outputs html on a Iframe
-    * html_string
+    * Appends an Iframe to the bottom of the page and writes in it
+    *
+    * html_string string to be appended
     * iframeId (optional)
     ***/
-    outputHtml:function(html_string,iframeId){
+    appendOnPage:function(html_string,iframeId){
         var id = id || 'notimportant';
         if (document.getElementById(id)){
             devcmd.removeElement('#'+id);
