@@ -1,4 +1,4 @@
-dev = {
+devcmd = {
     /***
     * Outputs a parameter string from an input json
     * ex: 
@@ -17,7 +17,9 @@ dev = {
     /***
     * Run a ajax post request
     * ex:
-    * dev.post({url:'/url/to/do/something.php',parameter:{'token':'foo','myValue':'42'}}, devcmd.outputHtml)
+    * dev.post({url:'http://www.example.com/dosomething',parameter:{'token':'foo','myValue':'42'}})
+    * or
+    * dev.post({url:'http://www.example.com/dosomething',parameter:{'token':'foo','myValue':'42'}}, devcmd.outputHtml)
     * 
     * postConfig a json with {url,parameters(optional),headers(optional)}
     * successCallback called when return status is OK
@@ -56,6 +58,41 @@ dev = {
         http.send(params);
     },
     postUrl:function(url){dev.post({url:url})},
+    /***
+    * Run a ajax get request
+    * ex:
+    * dev.get("http://www.example.com/dosomething")
+    * or
+    * dev.get("http://www.example.com/dosomething", devcmd.outputHtml)
+    * 
+    * postConfig a json with {url,parameters(optional),headers(optional)}
+    * successCallback called when return status is OK
+    * failureCallback called on any other status
+    ***/
+    get:function(url, successCallback,failureCallback){
+        var http = new XMLHttpRequest();
+        http.open("GET", url, true);
+
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        http.onreadystatechange = function() {
+            var done = 4;
+            var statusOK = 200;
+            if(http.readyState == done){
+                if(http.readyState == 4 && http.status == statusOK) {
+                    if(successCallback)
+                        successCallback(http.responseText);
+                    else
+                        console.log(http.responseText);
+                }else{
+                    if(failureCallback)
+                        failureCallback(http.responseText, http.status);
+                    else
+                        console.error(http.status+':\n'+http.responseText);
+                }
+            }
+        }
+        http.send();
+    },
     /***
     * Outputs html on a Iframe
     * html_string
