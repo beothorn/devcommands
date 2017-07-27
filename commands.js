@@ -57,7 +57,7 @@ devcmd = {
         }
         http.send(params);
     },
-    postUrl:function(url){dev.post({url:url})},
+    postUrl:function(url, params, successCallback, failureCallback){dev.post({url:url, parameter:params}, successCallback,failureCallback)},
     /***
     * Run a ajax get request
     * ex:
