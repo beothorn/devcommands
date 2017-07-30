@@ -8,8 +8,6 @@ Methods:
  
  devcmd.post
  
- devcmd.postUrl
- 
  devcmd.get
  
  devcmd.appendOnPage
