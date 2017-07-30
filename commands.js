@@ -17,27 +17,30 @@ devcmd = {
     /***
     * Run a ajax post request
     * ex:
-    * dev.post({url:'http://www.example.com/dosomething',parameter:{'token':'foo','myValue':'42'}})
+    * dev.post('http://www.example.com/dosomething',{'token':'foo','myValue':'42'}})
     * or
-    * dev.post({url:'http://www.example.com/dosomething',parameter:{'token':'foo','myValue':'42'}}, devcmd.appendOnPage)
+    * dev.post('http://www.example.com/dosomething',{'token':'foo','myValue':'42'}}, devcmd.appendOnPage)
     * 
-    * postConfig a json with {url,parameters(optional),headers(optional)}
+    * url
+    * parameters
     * successCallback called when return status is OK
     * failureCallback called on any other status
     ***/
-    post:function(postConfig, successCallback,failureCallback){
+    post:function(url, parameters, successCallback, failureCallback, headers){
         var http = new XMLHttpRequest();
         var params = {};
-        if(postConfig.parameters)
-            params = devcmd.toParams(postConfig.parameters);
-        http.open("POST", (postConfig.url || '.'), true);
+        if(parameters)
+            params = this.toParams(parameters);
+        http.open("POST", (url || '.'), true);
         
-        if(postConfig.headers){
-            for (let key of Object.keys(postConfig.headers)) {
-                http.setRequestHeader(key, postConfig.headers[key]);
+        if(headers){
+            for (let key of Object.keys(headers)) {
+                http.setRequestHeader(key, headers[key]);
             }
+        }else{
+            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");    
         }
-        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        
         http.onreadystatechange = function() {
             var done = 4;
             var statusOK = 200;
@@ -57,7 +60,6 @@ devcmd = {
         }
         http.send(params);
     },
-    postUrl:function(url, params, successCallback, failureCallback){dev.post({url:url, parameter:params}, successCallback,failureCallback)},
     /***
     * Run a ajax get request
     * ex:
@@ -69,11 +71,18 @@ devcmd = {
     * successCallback called when return status is OK
     * failureCallback called on any other status
     ***/
-    get:function(url, successCallback,failureCallback){
+    get:function(url, successCallback, failureCallback, headers){
         var http = new XMLHttpRequest();
         http.open("GET", url, true);
 
-        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        if(headers){
+            for (let key of Object.keys(headers)) {
+                http.setRequestHeader(key, headers[key]);
+            }
+        }else{
+            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");    
+        }
+        
         http.onreadystatechange = function() {
             var done = 4;
             var statusOK = 200;
