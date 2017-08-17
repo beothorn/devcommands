@@ -33,12 +33,11 @@ devcmd = {
             params = this.toParams(parameters);
         http.open("POST", (url || '.'), true);
         
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         if(headers){
             for (let key of Object.keys(headers)) {
                 http.setRequestHeader(key, headers[key]);
             }
-        }else{
-            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");    
         }
         
         http.onreadystatechange = function() {
@@ -75,12 +74,11 @@ devcmd = {
         var http = new XMLHttpRequest();
         http.open("GET", url, true);
 
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         if(headers){
             for (let key of Object.keys(headers)) {
                 http.setRequestHeader(key, headers[key]);
             }
-        }else{
-            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");    
         }
         
         http.onreadystatechange = function() {
