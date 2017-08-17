@@ -168,7 +168,11 @@ devcmd = {
         for(var i = 0; i <= 100000; i++){
             window.cancelAnimationFrame(i);
         }
-    }
+    },
+    /***
+    * Use this to pass function as param
+    ***/
+    out : console.log.bind(console)
     //TODO: chrome perf tools here (see https://medium.freecodecamp.com/10-tips-to-maximize-your-javascript-debugging-experience-b69a75859329#.9p62qm879)
     //TODO: matrix to console table ex: table(["colA","colB"],[[1,2][3,4]]);
 };
