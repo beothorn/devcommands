@@ -1,0 +1,24 @@
+{
+    "description": "Debugging utilities on global devcmd.",
+    "manifest_version": 2,
+    "name": "Dev Commands",
+    "version": "0.0.1",
+    "author": "Beothorn",
+    "homepage_url": "https://github.com/beothorn/devtools_snippets",
+    "icons": {
+        "48": "icons/logo-48.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "commands.js"
+            ]
+        }
+    ],
+    "permissions": [
+        "<all_urls>"
+    ]
+}

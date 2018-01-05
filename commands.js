@@ -1,3 +1,5 @@
+var devcmd = function() { return globalJSValue; }
+
 devcmd = {
     /***
     * Outputs a parameter string from an input json
