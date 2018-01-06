@@ -170,10 +170,7 @@ var devcmd = {
     /***
     * Use this to pass function as param
     ***/
-    out : console.log.bind(console)
-    //TODO: chrome perf tools here (see https://medium.freecodecamp.com/10-tips-to-maximize-your-javascript-debugging-experience-b69a75859329#.9p62qm879)
+    out : console.log.bind(console),
+    help : () => console.log("Methods:\n devcmd."+Object.getOwnPropertyNames(devcmd).join("\n devcmd."))
     //TODO: matrix to console table ex: table(["colA","colB"],[[1,2][3,4]]);
 };
-
-console.log("Methods:\n devcmd."+Object.getOwnPropertyNames(devcmd).join("\n devcmd."));
-"Loaded devcmd";

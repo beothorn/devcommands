@@ -1,3 +1,3 @@
 # Dev commands 
 
-Loads some usefull functions on a global devcmd
+A browser extension that loads some usefull functions on a global devcmd.
